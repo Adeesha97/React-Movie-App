@@ -1,27 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home/Home"
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
-import MovieDetail from "./components/MovieDetail/MovieDetail"
-import PageNotFound from "./components/PageNotFound/PageNotFound"
+import Home from "./components/Home/Home";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import MovieDetail from "./components/MovieDetail/MovieDetail";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
-
-import './App.scss';
-
+import "./App.scss";
 
 function App() {
   return (
     <div className="app">
       <Router>
-        <Header></Header>
-        <Switch>
-        <Route path='/' component={Home} />
-        <Route path='/movie/:imdbID' component={MovieDetail} />
-        <Route path='/' component={PageNotFound} />
-          <Footer />
-          </Switch>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/movie/:imdbID" element={<MovieDetail />} />
+            <Route element={<PageNotFound />} />
+          </Routes>
+        </div>
+        <Footer />
       </Router>
     </div>
   );
